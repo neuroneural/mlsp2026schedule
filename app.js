@@ -73,6 +73,7 @@ const programGrid = document.querySelector("#program-grid");
 const results = document.querySelector("#paper-results");
 const resultsSummary = document.querySelector("#results-summary");
 const clearButton = document.querySelector("#clear-filters");
+const searchPreview = document.querySelector("#search-preview");
 
 function normalize(value) {
   return String(value ?? "")
@@ -162,20 +163,17 @@ function paperScore(paper) {
 }
 
 function renderProgram() {
-  const tokens = queryTokens();
   programGrid.innerHTML = program.map((day) => {
     const events = day.events.map((event) => {
-      const eventText = normalize(`${day.day} ${day.dateLabel} ${event.time} ${event.title} ${event.detail ?? ""}`);
-      const matches = !tokens.length || tokens.every((token) => eventText.includes(token));
       const tag = event.sessionId ? "button" : "div";
       const attrs = event.sessionId
         ? `type="button" data-session-jump="${event.sessionId}" aria-label="Show papers in ${escapeHtml(event.title)}"`
         : "";
       return `
-        <${tag} class="event-card${matches ? "" : " is-dimmed"}" data-kind="${event.kind}" ${attrs}>
-          <span class="event-time">${highlight(event.time)}</span>
-          <span class="event-title">${highlight(event.title)}</span>
-          ${event.detail ? `<span class="event-detail">${highlight(event.detail)}</span>` : ""}
+        <${tag} class="event-card" data-kind="${event.kind}" ${attrs}>
+          <span class="event-time">${escapeHtml(event.time)}</span>
+          <span class="event-title">${escapeHtml(event.title)}</span>
+          ${event.detail ? `<span class="event-detail">${escapeHtml(event.detail)}</span>` : ""}
         </${tag}>
       `;
     }).join("");
@@ -213,27 +211,29 @@ function paperMarkup(paper) {
     : "";
   return `
     <article class="paper-card ${paper.oral ? "has-oral" : "poster-only"}" id="${paper.id}">
-      <div class="paper-topline">
+      <div class="paper-meta">
         <span class="paper-number">Paper ${paper.submissionNumber}</span>
         <span class="format-tag ${paper.oral ? "" : "poster"}">${paper.oral ? "Oral + poster" : "Poster"}</span>
       </div>
-      <h3><a href="${escapeHtml(paper.openreviewUrl)}" target="_blank" rel="noreferrer">${highlight(paper.title)}</a></h3>
-      <p class="authors">${authorMarkup(paper)}</p>
-      <p class="theme">${highlight(paper.theme)}</p>
+      <div class="paper-main">
+        <h3><a href="${escapeHtml(paper.openreviewUrl)}" target="_blank" rel="noreferrer">${highlight(paper.title)}</a></h3>
+        <p class="authors">${authorMarkup(paper)}</p>
+        <p class="theme">${highlight(paper.theme)}</p>
+        <details>
+          <summary>Read abstract</summary>
+          <p>${highlight(paper.abstract)}</p>
+        </details>
+      </div>
       <div class="schedule-block">
         ${oralLine ? `<div class="schedule-row"><strong>Oral</strong><span>${highlight(oralLine)}</span></div>` : ""}
         <div class="schedule-row"><strong>Poster</strong><span>${highlight(posterLine)}</span></div>
       </div>
-      <details>
-        <summary>Read abstract</summary>
-        <p>${highlight(paper.abstract)}</p>
-      </details>
     </article>
   `;
 }
 
-function renderPapers() {
-  const ranked = state.papers
+function rankedPapers() {
+  return state.papers
     .map((paper) => ({ paper, score: paperScore(paper) }))
     .filter(({ paper, score }) => {
       if (score < 0) return false;
@@ -250,6 +250,58 @@ function renderPapers() {
         || a.paper.theme.localeCompare(b.paper.theme)
         || a.paper.title.localeCompare(b.paper.title);
     });
+}
+
+function quickSchedule(paper) {
+  if (paper.oral) {
+    return `Oral · ${formatDate(paper.oral.date)}, ${formatTime(paper.oral.start)} · ${paper.oral.label}`;
+  }
+  return `Poster · ${formatDate(paper.poster.date)}, ${formatTime(paper.poster.start)} · ${paper.poster.label}`;
+}
+
+function renderSearchPreview(ranked) {
+  const searching = Boolean(state.query);
+  document.body.classList.toggle("has-query", searching);
+  searchPreview.hidden = !searching;
+  if (!searching) {
+    searchPreview.innerHTML = "";
+    return;
+  }
+
+  const label = ranked.length === 1 ? "match" : "matches";
+  if (!ranked.length) {
+    searchPreview.innerHTML = `
+      <div class="quick-summary"><strong>No matches</strong><button type="button" data-clear-search>Clear</button></div>
+      <p class="quick-empty">Try fewer words, another spelling, or a session number.</p>
+    `;
+  } else {
+    const firstMatches = ranked.slice(0, 4).map(({ paper }) => `
+      <a class="quick-result" href="#${paper.id}">
+        <span class="quick-title">${highlight(paper.title)}</span>
+        <span class="quick-time">${highlight(quickSchedule(paper))}</span>
+      </a>
+    `).join("");
+    searchPreview.innerHTML = `
+      <div class="quick-summary">
+        <strong>${ranked.length} ${label}</strong>
+        <button type="button" data-clear-search>Clear</button>
+      </div>
+      <div class="quick-results">${firstMatches}</div>
+      ${ranked.length > 4 ? `<a class="quick-all" href="#paper-explorer">View all ${ranked.length} results ↓</a>` : ""}
+    `;
+  }
+
+  searchPreview.querySelector("[data-clear-search]")?.addEventListener("click", () => {
+    state.query = "";
+    searchInput.value = "";
+    renderPapers();
+    searchInput.focus();
+  });
+}
+
+function renderPapers() {
+  const ranked = rankedPapers();
+  renderSearchPreview(ranked);
 
   const active = Boolean(state.query || state.day !== "all" || state.format !== "all" || state.session !== "all");
   clearButton.hidden = !active;
@@ -303,13 +355,11 @@ function clearAll() {
   updatePressedState("#day-filters", "day", "all");
   updatePressedState("#format-filters", "format", "all");
   updatePressedState("#session-filters", "session", "all");
-  renderProgram();
   renderPapers();
 }
 
 searchInput.addEventListener("input", () => {
   state.query = searchInput.value.trim();
-  renderProgram();
   renderPapers();
 });
 
@@ -321,7 +371,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && document.activeElement === searchInput) {
     searchInput.value = "";
     state.query = "";
-    renderProgram();
     renderPapers();
   }
 });

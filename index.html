@@ -32,15 +32,20 @@
 
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">IEEE Workshop on Machine Learning for Signal Processing</p>
-          <h1>Find your<br /><span>signal.</span></h1>
+          <p class="eyebrow">Atlanta, Georgia · Sep 28–Oct 1, 2026</p>
+          <h1>Paper<br /><span>schedule</span></h1>
           <p class="hero-intro">
-            One searchable view of every accepted paper, poster assignment, and oral presentation.
+            Find any accepted paper and see its poster and oral times immediately.
           </p>
+          <div class="hero-stats" aria-label="Program totals">
+            <span><strong id="paper-total">100</strong> papers</span>
+            <span><strong id="oral-total">30</strong> oral talks</span>
+            <span><strong>3</strong> poster sessions</span>
+          </div>
         </div>
 
         <div class="search-console" role="search">
-          <label for="schedule-search">Search the program</label>
+          <label for="schedule-search">Search papers &amp; sessions</label>
           <div class="search-input-wrap">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="6.5"></circle>
@@ -51,31 +56,23 @@
               type="search"
               autocomplete="off"
               spellcheck="false"
-              placeholder="Try an author, “EEG”, or Oral Session 4"
+              placeholder="Paper title, author, topic, or session…"
               aria-describedby="search-hint"
             />
             <kbd>/</kbd>
           </div>
-          <p id="search-hint">Type freely. Every word narrows the result set.</p>
-          <div class="hero-stats" aria-label="Program totals">
-            <div><strong id="paper-total">100</strong><span>papers</span></div>
-            <div><strong id="oral-total">30</strong><span>oral talks</span></div>
-            <div><strong>3</strong><span>poster sessions</span></div>
-          </div>
+          <p id="search-hint">Results appear here as you type. Press <kbd>Esc</kbd> to clear.</p>
+          <div id="search-preview" class="search-preview" aria-live="polite" hidden></div>
         </div>
       </div>
-
-      <svg class="hero-signal" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 66h185l20-23 22 48 25-70 24 45h155l19-15 26 30 26-62 25 47h177l18-28 25 54 24-76 28 50h166l24-20 23 38 27-66 25 48h220" />
-      </svg>
     </header>
 
     <main>
       <section class="program-section" aria-labelledby="program-title">
         <div class="section-heading">
           <div>
-            <p class="section-index">01 / Program</p>
-            <h2 id="program-title">Four days, at a glance</h2>
+            <p class="section-index">Full program</p>
+            <h2 id="program-title">At a glance</h2>
           </div>
           <p>Times are shown in the conference’s local time (ET).</p>
         </div>
@@ -85,8 +82,8 @@
       <section class="explorer-section" id="paper-explorer" aria-labelledby="explorer-title">
         <div class="section-heading explorer-heading">
           <div>
-            <p class="section-index">02 / Papers</p>
-            <h2 id="explorer-title">Explore the accepted papers</h2>
+            <p class="section-index">Accepted papers</p>
+            <h2 id="explorer-title">Browse all papers</h2>
           </div>
           <p>Every paper has a poster slot. Oral selections show both presentations.</p>
         </div>
