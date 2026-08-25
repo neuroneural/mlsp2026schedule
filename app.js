@@ -15,11 +15,25 @@ const program = [
     date: "2026-09-29",
     events: [
       { time: "8:00–9:00 AM", title: "Registration", kind: "registration" },
-      { time: "9:00–10:00 AM", title: "Keynote 1", detail: "Dr. Chen Chen · Foundation", kind: "keynote" },
+      {
+        time: "9:00–10:00 AM",
+        title: "Keynote 1",
+        detail: "Dr. Chen Chen · Foundation",
+        kind: "keynote",
+        talkTitle: "Reinforcement learning for visual generation",
+        abstract: "Visual generative models have advanced rapidly, yet aligning their outputs with precise conditions and human preferences remains challenging. This talk examines reinforcement learning for visual generation through three interconnected perspectives: reward design, reward rectification, and reward-data scaling. First, I will show how task-specific visual reward models and consistency feedback can provide explicit, efficient supervision for controllable image generation. Next, I will discuss how noisy or misaligned supervision can be rectified and strengthened through vision-language reasoning and contrastive signals, substantially improving instruction-based image editing. Finally, I will present a scalable framework for visual preference optimization that combines robust learning objectives with large, diverse, and carefully curated preference data for both image and video generation. Together, these studies highlight a central principle: effective reinforcement learning for visual generation depends not only on the optimization algorithm, but also on how reward signals are designed, corrected, and scaled.",
+      },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
       { time: "10:30 AM–12:00 PM", title: "Oral Session 1", detail: "Foundation & Generative Models for Signals", kind: "oral", sessionId: "oral-1" },
       { time: "12:00–1:00 PM", title: "Lunch Break", kind: "break" },
-      { time: "1:00–2:00 PM", title: "Keynote 2", detail: "Dr. Anand Sarwate · Federated", kind: "keynote" },
+      {
+        time: "1:00–2:00 PM",
+        title: "Keynote 2",
+        detail: "Dr. Anand Sarwate · Federated",
+        kind: "keynote",
+        talkTitle: "Differential privacy: from statistical decisions to application challenges",
+        abstract: "Differential privacy is now 20 years old and has become the \"gold standard\" for certain scenarios. At the same time, many people in machine learning and signal processing are less familiar with it. This talk will show how differential privacy connects to basic detection theory and the challenges that arise when trying to apply it to standard signal processing and machine learning scenarios.",
+      },
       { time: "2:00–3:30 PM", title: "Oral Session 2", detail: "Responsible, Causal & Federated Signal Intelligence", kind: "oral", sessionId: "oral-2" },
       { time: "3:30–4:00 PM", title: "Coffee Break", kind: "break" },
       { time: "4:00–6:00 PM", title: "Poster Session 1 + Special Session 1", kind: "poster", sessionId: "poster-1" },
@@ -36,7 +50,14 @@ const program = [
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
       { time: "10:30 AM–12:00 PM", title: "Oral Session 3", detail: "Temporal & Sequential Signal Learning", kind: "oral", sessionId: "oral-3" },
       { time: "12:00–1:00 PM", title: "Lunch Break", kind: "break" },
-      { time: "1:00–2:00 PM", title: "Keynote 4", detail: "Dr. Chethan Pandarinath · Neuroimaging", kind: "keynote" },
+      {
+        time: "1:00–2:00 PM",
+        title: "Keynote 4",
+        detail: "Dr. Chethan Pandarinath · Neuroimaging",
+        kind: "keynote",
+        talkTitle: "Interpreting computational mechanisms from multi-area brain recordings",
+        abstract: "Understanding how the brain subdivides into modular computational primitives requires disentangling one area's intrinsic dynamics from inter-area communication, yet existing models struggle with interpretable and hallucination-free inference of dynamics. We introduce DynISys, a multi-compartment latent dynamical systems model combining Neural ODEs and injective normalizing flows to achieve expressive, trustworthy, and interpretable inference directly from recordings of multi-region neural activity. Applied to motor cortex during reaching, DynISys uncovers how inter-area communication mechanically modulates fixed-point landscapes to drive motor preparation—offering an interpretable computational framework for interrogating distributed neural processing.",
+      },
       { time: "2:00–3:30 PM", title: "Oral Session 4", detail: "ML for Neuroimaging, Neuroscience and Beyond", kind: "oral", sessionId: "oral-4" },
       { time: "3:30–4:00 PM", title: "Coffee Break", kind: "break" },
       { time: "4:00–6:00 PM", title: "Poster Session 2 + Special Session 2", kind: "poster", sessionId: "poster-2" },
@@ -91,6 +112,12 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function displayTitle(value) {
+  const title = String(value ?? "").trim();
+  if (!title || title !== title.toUpperCase() || title === title.toLowerCase()) return title;
+  return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
 }
 
 function queryTokens() {
@@ -165,6 +192,22 @@ function paperScore(paper) {
 function renderProgram() {
   programGrid.innerHTML = program.map((day) => {
     const events = day.events.map((event) => {
+      if (event.talkTitle && event.abstract) {
+        return `
+          <details class="event-card keynote-event" data-kind="${event.kind}">
+            <summary>
+              <span class="event-time">${escapeHtml(event.time)}</span>
+              <span class="event-title">${escapeHtml(event.title)}</span>
+              <span class="event-detail">${escapeHtml(event.detail)}</span>
+              <span class="event-disclosure">Talk details</span>
+            </summary>
+            <div class="keynote-copy">
+              <h4>${escapeHtml(event.talkTitle)}</h4>
+              <p>${escapeHtml(event.abstract)}</p>
+            </div>
+          </details>
+        `;
+      }
       const tag = event.sessionId ? "button" : "div";
       const attrs = event.sessionId
         ? `type="button" data-session-jump="${event.sessionId}" aria-label="Show papers in ${escapeHtml(event.title)}"`
@@ -216,7 +259,7 @@ function paperMarkup(paper) {
         <span class="format-tag ${paper.oral ? "" : "poster"}">${paper.oral ? "Oral + poster" : "Poster"}</span>
       </div>
       <div class="paper-main">
-        <h3><a href="${escapeHtml(paper.openreviewUrl)}" target="_blank" rel="noreferrer">${highlight(paper.title)}</a></h3>
+        <h3><a href="${escapeHtml(paper.openreviewUrl)}" target="_blank" rel="noreferrer">${highlight(displayTitle(paper.title))}</a></h3>
         <p class="authors">${authorMarkup(paper)}</p>
         <p class="theme">${highlight(paper.theme)}</p>
         <details>
@@ -277,7 +320,7 @@ function renderSearchPreview(ranked) {
   } else {
     const firstMatches = ranked.slice(0, 4).map(({ paper }) => `
       <a class="quick-result" href="#${paper.id}">
-        <span class="quick-title">${highlight(paper.title)}</span>
+        <span class="quick-title">${highlight(displayTitle(paper.title))}</span>
         <span class="quick-time">${highlight(quickSchedule(paper))}</span>
       </a>
     `).join("");
