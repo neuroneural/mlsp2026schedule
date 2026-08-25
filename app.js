@@ -4,7 +4,60 @@ const program = [
     dateLabel: "SEP 28",
     date: "2026-09-28",
     events: [
-      { time: "Daytime", title: "Tutorial Day", detail: "Schedule to be finalized", kind: "tutorial" },
+      {
+        time: "8:00–9:30 AM",
+        title: "Tutorial 1",
+        detail: "Continuous Evaluation and Monitoring of Foundation Models: Streaming, Knowledge-Graph, and Benchmarking Methods for LLMs, and Agentic AI",
+        kind: "tutorial",
+        presenters: [
+          "Kishor Datta Gupta, Ph.D. · Clark Atlanta University",
+          "Mohd Ariful Haque, MS · Atlanta University Center Consortium",
+        ],
+        abstract: "Learn how to treat foundation-model outputs as time-indexed signals and detect hallucination, semantic drift, biased framing, and grounding failures through structured representations, adaptive thresholds, and anomaly detection. The tutorial moves beyond one-time leaderboards toward practical monitoring of LLMs, VLMs, RAG systems, and tool-using agents as models, prompts, retrieval corpora, safeguards, and the external world change.",
+      },
+      { time: "9:30–10:00 AM", title: "Coffee Break", kind: "break" },
+      {
+        time: "10:00–11:30 AM",
+        title: "Tutorial 2 · Session 1",
+        detail: "Recent Advances in the Application of AI and Machine Learning to Medical Video Analysis Systems",
+        kind: "tutorial",
+        presenters: ["Marios S. Pattichis, Ph.D. · University of New Mexico"],
+        abstract: "An introduction to the evolution of AI models and datasets for medical video analysis, with emphasis on video representations, modern architectures, and self- and semi-supervised approaches for small ground-truth datasets. The session connects these foundations to generative and foundation models for multimodal medical imaging.",
+      },
+      { time: "11:30 AM–12:00 PM", title: "Coffee Break", kind: "break" },
+      {
+        time: "12:00–1:00 PM",
+        title: "Tutorial 2 · Session 2",
+        detail: "Recent Advances in the Application of AI and Machine Learning to Medical Video Analysis Systems",
+        kind: "tutorial",
+        presenters: ["Marios S. Pattichis, Ph.D. · University of New Mexico"],
+        abstract: "A hands-on continuation with browser-based Google Colab demos. Attendees will work through concepts behind video Q&A, adversarial attacks and training, autoencoders, GANs, diffusion models, BiomedGPT, and where to find medical imaging and multimodal models and datasets.",
+      },
+      {
+        time: "2:00–3:00 PM",
+        title: "Tutorial 3 · Session 1",
+        detail: "Low-Rank Adaptation Redux in Large Models",
+        kind: "tutorial",
+        presenters: [
+          "Bingcong Li, Ph.D. · ETH Zurich",
+          "Yilang Zhang, Ph.D. · Morgan Stanley",
+          "Georgios B. Giannakis, Ph.D. · University of Minnesota",
+        ],
+        abstract: "Large-model scale drives performance but makes task-specific adaptation costly. This tutorial connects classical signal-processing tools for low-rank modeling with LoRA-based fine-tuning, showing how low-dimensional update structure can reduce memory and compute.",
+      },
+      { time: "3:00–4:00 PM", title: "Coffee Break", kind: "break" },
+      {
+        time: "4:00–5:30 PM",
+        title: "Tutorial 3 · Session 2",
+        detail: "Low-Rank Adaptation Redux in Large Models",
+        kind: "tutorial",
+        presenters: [
+          "Bingcong Li, Ph.D. · ETH Zurich",
+          "Yilang Zhang, Ph.D. · Morgan Stanley",
+          "Georgios B. Giannakis, Ph.D. · University of Minnesota",
+        ],
+        abstract: "A continuation of the low-rank adaptation framework, aimed at building a systematic understanding of fine-tuning methods with stronger expressiveness, effectiveness, and applicability. The session highlights how signal-processing insights can support more principled and broadly deployable LLM adaptation.",
+      },
       { time: "5:30–6:00 PM", title: "Special Keynote", detail: "Tülay Adalı", kind: "keynote" },
       { time: "6:00–9:00 PM", title: "Opening + Welcome Reception", kind: "social" },
     ],
@@ -192,17 +245,23 @@ function paperScore(paper) {
 function renderProgram() {
   programGrid.innerHTML = program.map((day) => {
     const events = day.events.map((event) => {
-      if (event.talkTitle && event.abstract) {
+      if (event.abstract) {
         return `
-          <details class="event-card keynote-event" data-kind="${event.kind}">
+          <details class="event-card detail-event" data-kind="${event.kind}">
             <summary>
               <span class="event-time">${escapeHtml(event.time)}</span>
               <span class="event-title">${escapeHtml(event.title)}</span>
               <span class="event-detail">${escapeHtml(event.detail)}</span>
-              <span class="event-disclosure">Talk details</span>
+              <span class="event-disclosure">${event.kind === "tutorial" ? "Tutorial details" : "Talk details"}</span>
             </summary>
-            <div class="keynote-copy">
-              <h4>${escapeHtml(event.talkTitle)}</h4>
+            <div class="event-expanded-copy">
+              ${event.talkTitle ? `<h4>${escapeHtml(event.talkTitle)}</h4>` : ""}
+              ${event.presenters?.length ? `
+                <div class="event-presenters">
+                  <strong>${event.presenters.length === 1 ? "Presenter" : "Presenters"}</strong>
+                  <ul>${event.presenters.map((presenter) => `<li>${escapeHtml(presenter)}</li>`).join("")}</ul>
+                </div>
+              ` : ""}
               <p>${escapeHtml(event.abstract)}</p>
             </div>
           </details>
