@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071a33" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071a33'/%3E%3Cpath d='M8 34h12l4-14 7 28 7-35 7 21h11' fill='none' stroke='%2333d6e5' stroke-width='4'/%3E%3C/svg%3E" />
+    <meta
+      name="description"
+      content="Search the MLSP 2026 program by paper title, author, theme, or presentation session."
+    />
+    <title>MLSP 2026 — Searchable Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#paper-explorer">Skip to paper explorer</a>
+
+    <header class="hero" id="top">
+      <nav class="masthead" aria-label="Conference schedule">
+        <a class="wordmark" href="#top" aria-label="MLSP 2026 schedule home">
+          <span>MLSP</span><span class="wordmark-year">/ 2026</span>
+        </a>
+        <div class="conference-dates">September 28 — October 1</div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">IEEE Workshop on Machine Learning for Signal Processing</p>
+          <h1>Find your<br /><span>signal.</span></h1>
+          <p class="hero-intro">
+            One searchable view of every accepted paper, poster assignment, and oral presentation.
+          </p>
+        </div>
+
+        <div class="search-console" role="search">
+          <label for="schedule-search">Search the program</label>
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"></circle>
+              <path d="m16 16 4 4"></path>
+            </svg>
+            <input
+              id="schedule-search"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Try an author, “EEG”, or Oral Session 4"
+              aria-describedby="search-hint"
+            />
+            <kbd>/</kbd>
+          </div>
+          <p id="search-hint">Type freely. Every word narrows the result set.</p>
+          <div class="hero-stats" aria-label="Program totals">
+            <div><strong id="paper-total">100</strong><span>papers</span></div>
+            <div><strong id="oral-total">30</strong><span>oral talks</span></div>
+            <div><strong>3</strong><span>poster sessions</span></div>
+          </div>
+        </div>
+      </div>
+
+      <svg class="hero-signal" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 66h185l20-23 22 48 25-70 24 45h155l19-15 26 30 26-62 25 47h177l18-28 25 54 24-76 28 50h166l24-20 23 38 27-66 25 48h220" />
+      </svg>
+    </header>
+
+    <main>
+      <section class="program-section" aria-labelledby="program-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">01 / Program</p>
+            <h2 id="program-title">Four days, at a glance</h2>
+          </div>
+          <p>Times are shown in the conference’s local time (ET).</p>
+        </div>
+        <div id="program-grid" class="program-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="explorer-section" id="paper-explorer" aria-labelledby="explorer-title">
+        <div class="section-heading explorer-heading">
+          <div>
+            <p class="section-index">02 / Papers</p>
+            <h2 id="explorer-title">Explore the accepted papers</h2>
+          </div>
+          <p>Every paper has a poster slot. Oral selections show both presentations.</p>
+        </div>
+
+        <div class="filter-deck" aria-label="Schedule filters">
+          <div class="filter-row">
+            <span class="filter-label">Day</span>
+            <div class="chip-group" id="day-filters" role="group" aria-label="Filter by poster day">
+              <button class="chip is-active" type="button" data-day="all" aria-pressed="true">All days</button>
+              <button class="chip" type="button" data-day="2026-09-29" aria-pressed="false">Tue 29</button>
+              <button class="chip" type="button" data-day="2026-09-30" aria-pressed="false">Wed 30</button>
+              <button class="chip" type="button" data-day="2026-10-01" aria-pressed="false">Thu 1</button>
+            </div>
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">Format</span>
+            <div class="chip-group" id="format-filters" role="group" aria-label="Filter by presentation format">
+              <button class="chip is-active" type="button" data-format="all" aria-pressed="true">All papers</button>
+              <button class="chip" type="button" data-format="oral" aria-pressed="false">Oral selection</button>
+              <button class="chip" type="button" data-format="poster-only" aria-pressed="false">Poster only</button>
+            </div>
+          </div>
+          <div class="filter-row session-filter-row">
+            <span class="filter-label">Session</span>
+            <div class="chip-group" id="session-filters" role="group" aria-label="Filter by session"></div>
+          </div>
+        </div>
+
+        <div class="results-toolbar">
+          <p id="results-summary" role="status">Loading the paper schedule…</p>
+          <button id="clear-filters" class="text-button" type="button" hidden>Clear search & filters</button>
+        </div>
+
+        <div id="paper-results" class="paper-results" aria-live="polite" aria-busy="true"></div>
+        <noscript>This schedule requires JavaScript for search and filtering.</noscript>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-mark">MLSP <span>/ 2026</span></div>
+      <p>Schedule data cross-referenced from the conference assignment workbook and accepted-submission list.</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
