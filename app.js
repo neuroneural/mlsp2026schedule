@@ -242,8 +242,9 @@ function authorMarkup(paper) {
   if (!paper.authors.length) {
     return `<span class="authors-missing">Author list available on OpenReview</span>`;
   }
-  return paper.authors.map((author) =>
-    `<a href="${escapeHtml(author.profileUrl)}" target="_blank" rel="noreferrer">${highlight(author.name)}</a>`,
+  return paper.authors.map((author) => author.profileUrl
+    ? `<a href="${escapeHtml(author.profileUrl)}" target="_blank" rel="noreferrer">${highlight(author.name)}</a>`
+    : `<span class="author-name">${highlight(author.name)}</span>`,
   ).join(", ");
 }
 
@@ -423,7 +424,7 @@ bindFilterGroup("#day-filters", "day");
 bindFilterGroup("#format-filters", "format");
 renderProgram();
 
-fetch("./data/papers.json")
+fetch("./data/papers.json?v=20260825-authors")
   .then((response) => {
     if (!response.ok) throw new Error(`Schedule data returned ${response.status}`);
     return response.json();

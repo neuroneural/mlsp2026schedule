@@ -25,6 +25,13 @@ node scripts/verify-data.mjs
 
 Run this after `build-data.mjs`, because rebuilding the paper data replaces `data/papers.json`.
 
+If the camera-ready audit workbook is available, it can populate every author name without API credentials while preserving its first-author OpenReview profile links:
+
+```bash
+node scripts/import-authors-workbook.mjs "/path/to/MLSP_2026_First author student status.xlsx"
+node scripts/verify-data.mjs
+```
+
 ## Run locally
 
 Serve the directory over HTTP (the page fetches its JSON data file):
