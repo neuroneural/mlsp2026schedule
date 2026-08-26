@@ -36,7 +36,7 @@ const program = [
       },
       { time: "1:00–2:00 PM", title: "Lunch Break", kind: "break" },
       {
-        time: "2:00–3:00 PM",
+        time: "2:00–3:15 PM",
         title: "Tutorial 3 · Session 1",
         detail: "Low-Rank Adaptation Redux in Large Models",
         kind: "tutorial",
@@ -47,9 +47,9 @@ const program = [
         ],
         abstract: "Large-model scale drives performance but makes task-specific adaptation costly. This tutorial connects classical signal-processing tools for low-rank modeling with LoRA-based fine-tuning, showing how low-dimensional update structure can reduce memory and compute.",
       },
-      { time: "3:00–4:00 PM", title: "Coffee Break", kind: "break" },
+      { time: "3:15–3:45 PM", title: "Coffee Break", kind: "break" },
       {
-        time: "4:00–5:30 PM",
+        time: "3:45–5:30 PM",
         title: "Tutorial 3 · Session 2",
         detail: "Low-Rank Adaptation Redux in Large Models",
         kind: "tutorial",
