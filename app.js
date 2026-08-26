@@ -4,6 +4,7 @@ const program = [
     dateLabel: "SEP 28",
     date: "2026-09-28",
     events: [
+      { time: "7:30 AM", title: "Registration", kind: "registration" },
       {
         time: "8:00–9:30 AM",
         title: "Tutorial 1",
@@ -68,7 +69,7 @@ const program = [
     dateLabel: "SEP 29",
     date: "2026-09-29",
     events: [
-      { time: "8:00–9:00 AM", title: "Registration", kind: "registration" },
+      { time: "8:00 AM", title: "Registration", kind: "registration" },
       {
         time: "9:00–10:00 AM",
         title: "Keynote 1",
@@ -99,7 +100,7 @@ const program = [
     dateLabel: "SEP 30",
     date: "2026-09-30",
     events: [
-      { time: "8:00–9:00 AM", title: "Registration", kind: "registration" },
+      { time: "8:00 AM", title: "Registration", kind: "registration" },
       { time: "9:00–10:00 AM", title: "Keynote 3", detail: "Dr. Justin Romberg · Temporal", kind: "keynote" },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
       { time: "10:30 AM–12:00 PM", title: "Oral Session 3", detail: "Temporal & Sequential Signal Learning", kind: "oral", sessionId: "oral-3" },
@@ -123,7 +124,7 @@ const program = [
     dateLabel: "OCT 1",
     date: "2026-10-01",
     events: [
-      { time: "8:00–9:00 AM", title: "Registration", kind: "registration" },
+      { time: "8:00 AM", title: "Registration", kind: "registration" },
       { time: "9:00–10:00 AM", title: "Keynote 5", detail: "Dr. Mohit Bansal · Agentic", kind: "keynote" },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
       { time: "10:30 AM–12:00 PM", title: "Oral Session 5", detail: "Agentic & Multimodal Learning", kind: "oral", sessionId: "oral-5" },
