@@ -13,7 +13,7 @@ const program = [
           "Kishor Datta Gupta, Ph.D. · Clark Atlanta University",
           "Mohd Ariful Haque, MS · Atlanta University Center Consortium",
         ],
-        abstract: "Learn how to treat foundation-model outputs as time-indexed signals and detect hallucination, semantic drift, biased framing, and grounding failures through structured representations, adaptive thresholds, and anomaly detection. The tutorial moves beyond one-time leaderboards toward practical monitoring of LLMs, VLMs, RAG systems, and tool-using agents as models, prompts, retrieval corpora, safeguards, and the external world change.",
+        abstract: "Learn how to treat foundation-model outputs as time-indexed signals and detect hallucination, semantic drift, biased framing, and grounding failures through structured representations, adaptive thresholds, and anomaly detection. The tutorial moves beyond one-time leaderboards toward practical monitoring of LLMs, VLMs, RAG systems, and tool-using agents while models, prompts, retrieval corpora, safeguards, and the external world change.",
       },
       { time: "9:30–10:00 AM", title: "Coffee Break", kind: "break" },
       {
@@ -24,15 +24,16 @@ const program = [
         presenters: ["Marios S. Pattichis, Ph.D. · University of New Mexico"],
         abstract: "An introduction to the evolution of AI models and datasets for medical video analysis, with emphasis on video representations, modern architectures, and self- and semi-supervised approaches for small ground-truth datasets. The session connects these foundations to generative and foundation models for multimodal medical imaging.",
       },
-      { time: "11:30 AM–12:00 PM", title: "Coffee Break", kind: "break" },
+      { time: "11:30–11:45 AM", title: "Coffee Break", kind: "break" },
       {
-        time: "12:00–1:00 PM",
+        time: "11:45 AM–1:00 PM",
         title: "Tutorial 2 · Session 2",
         detail: "Recent Advances in the Application of AI and Machine Learning to Medical Video Analysis Systems",
         kind: "tutorial",
         presenters: ["Marios S. Pattichis, Ph.D. · University of New Mexico"],
         abstract: "A hands-on continuation with browser-based Google Colab demos. Attendees will work through concepts behind video Q&A, adversarial attacks and training, autoencoders, GANs, diffusion models, BiomedGPT, and where to find medical imaging and multimodal models and datasets.",
       },
+      { time: "1:00–2:00 PM", title: "Lunch Break", kind: "break" },
       {
         time: "2:00–3:00 PM",
         title: "Tutorial 3 · Session 1",
