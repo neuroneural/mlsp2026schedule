@@ -132,7 +132,14 @@ const program = [
     date: "2026-10-01",
     events: [
       { time: "8:00 AM", title: "Registration", kind: "registration" },
-      { time: "9:00–10:00 AM", title: "Keynote 5", detail: "Dr. Mohit Bansal · Agentic", kind: "keynote" },
+      {
+        time: "9:00–10:00 AM",
+        title: "Keynote 5",
+        detail: "Dr. Mohit Bansal · Agentic",
+        kind: "keynote",
+        talkTitle: "Trustworthy Planning Agents for Collaborative Reasoning and Multimodal Generation",
+        abstract: "In this talk, I will present our journey of developing trustworthy and adaptive AI planning agents that can reliably communicate and collaborate for uncertainty-calibrated reasoning (across diverse domains, such as math, commonsense, coding and tool-use) and for interpretable, controllable multimodal generation (across diverse modalities such as text, images, videos, audio, layouts, etc.). In the first part, we will discuss: (1) how to teach agents to be trustworthy and reliable collaborators via social/pragmatic multi-agent interactions (e.g., confidence calibration via speaker-listener reasoning and learning to balance positive and negative persuasion), as well as (2) how to acquire and improve agent skills needed for efficient and robust perception and action (e.g., learning reusable, verified abstractions over actions & code, and adaptive data generation based on discovered weak skills). In the second part, we will discuss interpretable and controllable multimodal generation via LLM-agents based planning and programming, such as (1) layout-controllable image generation and evaluation via visual programming, (2) consistent video generation via LLM-guided multi-scene planning, targeted corrections, and retrieval-augmented motion adaptation, and (3) interactive, composable any-to-any multimodal generations. We will conclude with examples of improving real-world applications such as medical data reasoning and classroom education engagement.",
+      },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
       { time: "10:30 AM–12:00 PM", title: "Oral Session 5", detail: "Agentic & Multimodal Learning", kind: "oral", sessionId: "oral-5" },
       { time: "12:00–1:00 PM", title: "Lunch Break", kind: "break" },
