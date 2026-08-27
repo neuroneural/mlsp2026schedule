@@ -15,7 +15,7 @@ assert(papers.every((paper) => paper.title && paper.abstract && paper.poster), "
 const posterCounts = Object.fromEntries(
   ["poster-1", "poster-2", "poster-3"].map((id) => [id, papers.filter((paper) => paper.poster.id === id).length]),
 );
-assert(JSON.stringify(posterCounts) === JSON.stringify({ "poster-1": 33, "poster-2": 34, "poster-3": 33 }), `Unexpected poster counts: ${JSON.stringify(posterCounts)}`);
+assert(JSON.stringify(posterCounts) === JSON.stringify({ "poster-1": 34, "poster-2": 34, "poster-3": 32 }), `Unexpected poster counts: ${JSON.stringify(posterCounts)}`);
 
 const oralPapers = papers.filter((paper) => paper.oral);
 assert(oralPapers.length === 30, `Expected 30 oral papers, found ${oralPapers.length}`);

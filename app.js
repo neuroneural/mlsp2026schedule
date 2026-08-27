@@ -101,7 +101,14 @@ const program = [
     date: "2026-09-30",
     events: [
       { time: "8:00 AM", title: "Registration", kind: "registration" },
-      { time: "9:00–10:00 AM", title: "Keynote 3", detail: "Dr. Justin Romberg · Temporal", kind: "keynote" },
+      {
+        time: "9:00–10:00 AM",
+        title: "Keynote 3",
+        detail: "Dr. Justin Romberg · Temporal",
+        kind: "keynote",
+        talkTitle: "Dimensionality reduction for sensor arrays",
+        abstract: "Next-generation RF arrays will have the ability to generate data at tremendous rates. In this talk we will discuss how these massive data streams can be managed using dimensionality reduction at the array. By adopting and expanding upon ideas from machine learning (including kernel regression, online PCA algorithms, and manifold optimization) and harmonic analysis, we develop a framework that is both \"hardware friendly\" and has a strong theoretical foundation.",
+      },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
       { time: "10:30 AM–12:00 PM", title: "Oral Session 3", detail: "Temporal & Sequential Signal Learning", kind: "oral", sessionId: "oral-3" },
       { time: "12:00–1:00 PM", title: "Lunch Break", kind: "break" },

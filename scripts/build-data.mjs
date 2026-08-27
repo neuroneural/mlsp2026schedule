@@ -32,6 +32,10 @@ const sessionDetails = {
   },
 };
 
+const posterSessionOverrides = new Map([
+  [134, "Poster Session 1 - Tue Sep 29"],
+]);
+
 function cleanTitle(title) {
   return String(title)
     .replaceAll("‚Ñ¢", "™")
@@ -143,7 +147,9 @@ for (const [index, record] of records.entries()) {
   }
   if (metadata.authors.length) authorMatches += 1;
 
-  const poster = sessionDetails[record["Poster Session Assignment"]];
+  const posterAssignment = posterSessionOverrides.get(Number(record.submission_number))
+    ?? record["Poster Session Assignment"];
+  const poster = sessionDetails[posterAssignment];
   const oralBase = record["Confirmed Oral Assignment"] ? sessionDetails[record["Confirmed Oral Assignment"]] : null;
   const order = record["Oral Presentation Order"] ? Number(record["Oral Presentation Order"]) : null;
   const oral = oralBase && order ? {
