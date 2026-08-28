@@ -60,7 +60,13 @@ const program = [
         ],
         abstract: "A continuation of the low-rank adaptation framework, aimed at building a systematic understanding of fine-tuning methods with stronger expressiveness, effectiveness, and applicability. The session highlights how signal-processing insights can support more principled and broadly deployable LLM adaptation.",
       },
-      { time: "5:30–6:00 PM", title: "Special Keynote", detail: "Tülay Adalı", kind: "keynote" },
+      {
+        time: "5:30–6:00 PM",
+        title: "Special Keynote",
+        detail: "Tülay Adalı",
+        kind: "keynote",
+        talkTitle: "From Latent Structure to Reliable Conclusions: Interpretable Data Fusion and Fair Comparisons",
+      },
       { time: "6:00–9:00 PM", title: "Opening + Welcome Reception", kind: "social" },
     ],
   },
@@ -292,6 +298,7 @@ function renderProgram() {
           <span class="event-time">${escapeHtml(event.time)}</span>
           <span class="event-title">${escapeHtml(event.title)}</span>
           ${event.detail ? `<span class="event-detail">${escapeHtml(event.detail)}</span>` : ""}
+          ${event.talkTitle ? `<span class="event-talk-title">${escapeHtml(event.talkTitle)}</span>` : ""}
         </${tag}>
       `;
     }).join("");
