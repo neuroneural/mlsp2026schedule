@@ -484,6 +484,60 @@ button.event-card:focus-visible {
   outline: none;
 }
 
+.hosted-session-jump {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hosted-session-jump:hover .event-title,
+.hosted-session-jump:focus-visible .event-title {
+  color: var(--indigo);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hosted-session-jump:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+}
+
+.session-chairs {
+  display: grid;
+  gap: 2px;
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid var(--soft-line);
+  color: var(--slate);
+  font-size: 0.66rem;
+  line-height: 1.35;
+}
+
+.session-chairs strong {
+  color: var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.session-chairs a {
+  color: var(--indigo);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.session-chairs a:hover,
+.session-chairs a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .detail-event {
   padding-right: 12px;
 }
