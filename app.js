@@ -409,6 +409,13 @@ function rankedPapers() {
     })
     .sort((a, b) => {
       if (state.query && b.score !== a.score) return b.score - a.score;
+      const sortByOralTime = state.format === "oral" || state.session.startsWith("oral-");
+      if (sortByOralTime) {
+        return a.paper.oral.date.localeCompare(b.paper.oral.date)
+          || a.paper.oral.start.localeCompare(b.paper.oral.start)
+          || a.paper.oral.order - b.paper.oral.order
+          || a.paper.title.localeCompare(b.paper.title);
+      }
       return a.paper.poster.date.localeCompare(b.paper.poster.date)
         || a.paper.poster.id.localeCompare(b.paper.poster.id)
         || a.paper.theme.localeCompare(b.paper.theme)
