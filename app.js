@@ -544,7 +544,7 @@ bindFilterGroup("#day-filters", "day");
 bindFilterGroup("#format-filters", "format");
 renderProgram();
 
-fetch("./data/papers.json?v=20260825-authors")
+fetch("./data/papers.json?v=20260909-paper24-oral4")
   .then((response) => {
     if (!response.ok) throw new Error(`Schedule data returned ${response.status}`);
     return response.json();

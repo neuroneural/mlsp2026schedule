@@ -1616,16 +1616,7 @@
         "start": "16:00",
         "end": "18:00"
       },
-      "oral": {
-        "id": "oral-4",
-        "kind": "oral",
-        "label": "Oral Session 4",
-        "day": "Wednesday",
-        "date": "2026-09-30",
-        "start": "14:30",
-        "end": "14:45",
-        "order": 3
-      }
+      "oral": null
     },
     {
       "id": "paper-11",
@@ -2510,7 +2501,16 @@
         "start": "16:00",
         "end": "18:00"
       },
-      "oral": null
+      "oral": {
+        "id": "oral-4",
+        "kind": "oral",
+        "label": "Oral Session 4",
+        "day": "Wednesday",
+        "date": "2026-09-30",
+        "start": "14:30",
+        "end": "14:45",
+        "order": 3
+      }
     },
     {
       "id": "paper-15",
