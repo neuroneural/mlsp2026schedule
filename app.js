@@ -86,7 +86,20 @@ const program = [
         abstract: "Visual generative models have advanced rapidly, yet aligning their outputs with precise conditions and human preferences remains challenging. This talk examines reinforcement learning for visual generation through three interconnected perspectives: reward design, reward rectification, and reward-data scaling. First, I will show how task-specific visual reward models and consistency feedback can provide explicit, efficient supervision for controllable image generation. Next, I will discuss how noisy or misaligned supervision can be rectified and strengthened through vision-language reasoning and contrastive signals, substantially improving instruction-based image editing. Finally, I will present a scalable framework for visual preference optimization that combines robust learning objectives with large, diverse, and carefully curated preference data for both image and video generation. Together, these studies highlight a central principle: effective reinforcement learning for visual generation depends not only on the optimization algorithm, but also on how reward signals are designed, corrected, and scaled.",
       },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
-      { time: "10:30 AM–12:00 PM", title: "Oral Session 1", detail: "Foundation & Generative Models for Signals", kind: "oral", sessionId: "oral-1" },
+      {
+        time: "10:30 AM–12:00 PM",
+        title: "Oral Session 1",
+        detail: "Foundation & Generative Models for Signals",
+        kind: "oral",
+        sessionId: "oral-1",
+        chairs: [
+          {
+            name: "Cem Subakan",
+            affiliation: "Université Laval",
+            profileUrl: "https://scholar.google.com/citations?user=zXzV-0UAAAAJ&hl=en",
+          },
+        ],
+      },
       { time: "12:00–1:00 PM", title: "Lunch Break", kind: "break" },
       {
         time: "1:00–2:00 PM",
@@ -140,7 +153,20 @@ const program = [
         talkTitle: "Interpreting computational mechanisms from multi-area brain recordings",
         abstract: "Understanding how the brain subdivides into modular computational primitives requires disentangling one area's intrinsic dynamics from inter-area communication, yet existing models struggle with interpretable and hallucination-free inference of dynamics. We introduce DynISys, a multi-compartment latent dynamical systems model combining Neural ODEs and injective normalizing flows to achieve expressive, trustworthy, and interpretable inference directly from recordings of multi-region neural activity. Applied to motor cortex during reaching, DynISys uncovers how inter-area communication mechanically modulates fixed-point landscapes to drive motor preparation—offering an interpretable computational framework for interrogating distributed neural processing.",
       },
-      { time: "2:00–3:30 PM", title: "Oral Session 4", detail: "ML for Neuroimaging, Neuroscience and Beyond", kind: "oral", sessionId: "oral-4" },
+      {
+        time: "2:00–3:30 PM",
+        title: "Oral Session 4",
+        detail: "ML for Neuroimaging, Neuroscience and Beyond",
+        kind: "oral",
+        sessionId: "oral-4",
+        chairs: [
+          {
+            name: "Christopher Drake",
+            affiliation: "University of South Carolina",
+            profileUrl: "https://www.linkedin.com/in/christopher-drake-73609315/",
+          },
+        ],
+      },
       { time: "3:30–4:00 PM", title: "Coffee Break", kind: "break" },
       { time: "4:00–6:00 PM", title: "Poster Session 2 + Special Session 2", kind: "poster", sessionId: "poster-2" },
       { time: "6:00–9:00 PM", title: "Banquet Dinner at the Aquarium", kind: "social" },
@@ -161,7 +187,20 @@ const program = [
         abstract: "In this talk, I will discuss 3 major pitfalls and challenges of current state-of-the-art AI agents, and present potential solutions for: (1) Teaching agents to be trustworthy and reliable collaborators based on: social/pragmatic multi-agent interactions via speaker-listener confidence calibration, learning to balance positive and negative persuasion, and multi-agent AI safety through the lens of compositional attacks, theory-of-mind, and belief-steering; (2) Discovering and improving skills/world models needed for efficient, robust action and collaboration based on: learning programmatic skills, weakness-driven adaptive data/environment generation for skill improvement, and structured, selective world model discovery and inference; (3) Planning of long-horizon memory for multi-step reasoning and generation over continuously evolving, conflicting, and scattered information. We will cover diverse domains (math, commonsense, coding, tool-use, computer use, etc.), modalities (text, images, videos, audio, layouts, etc.), and real-world applications (early medical diagnosis and classroom education engagement).",
       },
       { time: "10:00–10:30 AM", title: "Coffee Break", kind: "break" },
-      { time: "10:30 AM–12:00 PM", title: "Oral Session 5", detail: "Agentic & Multimodal Learning", kind: "oral", sessionId: "oral-5" },
+      {
+        time: "10:30 AM–12:00 PM",
+        title: "Oral Session 5",
+        detail: "Agentic & Multimodal Learning",
+        kind: "oral",
+        sessionId: "oral-5",
+        chairs: [
+          {
+            name: "Elizaveta Latash",
+            affiliation: "Georgia State University",
+            profileUrl: "https://www.linkedin.com/in/latash/",
+          },
+        ],
+      },
       { time: "12:00–1:00 PM", title: "Lunch Break", kind: "break" },
       { time: "1:00–3:00 PM", title: "Poster Session 3", kind: "poster", sessionId: "poster-3" },
       { time: "3:00–3:30 PM", title: "Closing Remarks", kind: "closing" },
@@ -317,7 +356,7 @@ function renderProgram() {
               <span class="event-detail">${escapeHtml(event.detail)}</span>
             </button>
             <div class="session-chairs">
-              <strong>${event.chairs.length === 1 ? "Co-chair" : "Co-chairs"}</strong>
+              <strong>${event.chairs.length === 1 ? "Session chair" : "Session chairs"}</strong>
               ${event.chairs.map((chair) => `
                 <span>
                   <a href="${escapeHtml(chair.profileUrl)}" target="_blank" rel="noreferrer">${escapeHtml(chair.name)}</a>
