@@ -239,7 +239,7 @@
     {
       "id": "paper-74",
       "submissionNumber": 74,
-      "title": "JA-SIREN: Deterministic Initialization for Sinusoidal Networks via Spectral Matching",
+      "title": "Jacobi-Anger Method for Deterministic Initialization in Implicit Neural Representation",
       "authors": [
         {
           "name": "Mohammed Alsakabi",
