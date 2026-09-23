@@ -109,7 +109,20 @@ const program = [
         talkTitle: "Differential privacy: from statistical decisions to application challenges",
         abstract: "Differential privacy is now 20 years old and has become the \"gold standard\" for certain scenarios. At the same time, many people in machine learning and signal processing are less familiar with it. This talk will show how differential privacy connects to basic detection theory and the challenges that arise when trying to apply it to standard signal processing and machine learning scenarios.",
       },
-      { time: "2:00–3:30 PM", title: "Oral Session 2", detail: "Responsible, Causal & Federated Signal Intelligence", kind: "oral", sessionId: "oral-2" },
+      {
+        time: "2:00–3:30 PM",
+        title: "Oral Session 2",
+        detail: "Responsible, Causal & Federated Signal Intelligence",
+        kind: "oral",
+        sessionId: "oral-2",
+        chairs: [
+          {
+            name: "Gangadharan Esakki",
+            affiliation: "NVIDIA",
+            profileUrl: "https://scholar.google.com/citations?user=L1yX5EwAAAAJ&hl=en",
+          },
+        ],
+      },
       { time: "3:30–4:00 PM", title: "Coffee Break", kind: "break" },
       { time: "4:00–6:00 PM", title: "Poster Session 1 + Special Session 1", kind: "poster", sessionId: "poster-1" },
       { time: "6:00–9:00 PM", title: "Social Event", kind: "social" },
