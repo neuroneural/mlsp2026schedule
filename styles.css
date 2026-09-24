@@ -63,6 +63,7 @@ a {
 
 .masthead,
 .hero-grid,
+.venue-line,
 .section-heading,
 .program-grid,
 .filter-deck,
@@ -133,6 +134,29 @@ kbd {
 
 .hero-copy {
   padding-top: 8px;
+}
+
+.venue-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-bottom: 0;
+  padding: 12px 0 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: #b8ccdd;
+  font-size: 0.82rem;
+}
+
+.venue-line a {
+  color: var(--white);
+  font-weight: 600;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-underline-offset: 3px;
+}
+
+.venue-line a:hover {
+  color: var(--cyan);
+  text-decoration-color: currentColor;
 }
 
 .eyebrow {
@@ -1007,6 +1031,7 @@ footer a {
 @media (max-width: 640px) {
   .masthead,
   .hero-grid,
+  .venue-line,
   .section-heading,
   .program-grid,
   .filter-deck,
