@@ -153,7 +153,7 @@ const program = [
           {
             name: "Prof. Austin Brockmeier",
             affiliation: "University of Delaware",
-            profileUrl: "https://www.cis.udel.edu/people/faculty/austin-brockmeier/",
+            profileUrl: "https://scholar.google.com/citations?user=g_QoCQQAAAAJ&hl=en",
           },
         ],
       },
@@ -210,7 +210,7 @@ const program = [
           {
             name: "Elizaveta Latash",
             affiliation: "Georgia State University",
-            profileUrl: "https://www.linkedin.com/in/latash/",
+            profileUrl: "https://scholar.google.com/citations?user=W7-IA6YAAAAJ&hl=en",
           },
         ],
       },
