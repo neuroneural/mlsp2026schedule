@@ -2,8 +2,8 @@
   "generatedAt": "2026-08-25T19:01:55.478Z",
   "sourceWorkbook": "MLSP 2026 Accepted papers by theme with poster oral assignments.xlsx",
   "conferenceTimezone": "America/New_York",
-  "paperCount": 100,
-  "authorMatchCount": 100,
+  "paperCount": 90,
+  "authorMatchCount": 90,
   "sourceTitleMismatchCount": 7,
   "papers": [
     {
@@ -37,32 +37,6 @@
       "theme": "Foundation & Generative Models for Signals",
       "abstract": "Source-Free Universal Domain Adaptation (SF-UniDA) extends Universal Domain Adaptation by removing access to source data at adaptation time while still handling label-set mismatches between domains. Despite growing interest in this setting for image data, no benchmark exists for time series, which are more challenging. We present the first SF-UniDA benchmark on time series. In addition, we provide the first study of pretrained foundation models as feature extractors for time series domain adaptation. In this context, we identify a critical and previously underexplored limitation of all existing SF-UniDA methods: the inference threshold for unknown-sample rejection is highly sensitive. We address this by proposing a plug-in auto-thresholding module that can be integrated into any SF-UniDA method. Experiments on three well-known time series datasets confirm the suitability of this module. They also highlight that foundation models do not systematically outperform classical backbones and that SF-UniDA tailored for time series is yet to be developed.",
       "openreviewUrl": "https://openreview.net/forum?id=jr6usKFn9i",
-      "poster": {
-        "id": "poster-1",
-        "kind": "poster",
-        "label": "Poster Session 1",
-        "day": "Tuesday",
-        "date": "2026-09-29",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
-    },
-    {
-      "id": "paper-123",
-      "submissionNumber": 123,
-      "title": "Adaptive Filtering of the KV Cache: Diagnosing and Correcting Structural-Role Bias in LLM Inference",
-      "authors": [
-        {
-          "name": "Soumil Mandal",
-          "profileUrl": "https://openreview.net/profile?id=~Soumil_Mandal1"
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Foundation & Generative Models for Signals",
-      "abstract": "Attention-based KV cache eviction (H2O and its descendants) compresses the memory-constrained state of a long-context model by ranking tokens on accumulated attention mass, treated here as signal energy, and keeping the heaviest. On schema-dense input streams such as nested JSON, this score acts as a non-stationary filter that disproportionately retains noise: a non-content sink role (delimiters or whitespace) carries an order of magnitude more energy than any content role, and structural KEY tokens are over-retained at roughly $1.8\\times$ the rate of the answer-carrying VALUE tokens, collapsing exact-match accuracy from 88\\% to 0\\% at a 5\\% budget as the signal-to-noise ratio of the retained state degrades. A counterfactual experiment establishes that suppressing KEY tokens is the best deployable filter. Our retraining-free, role-conditional allocation over SnapKV's windowed score, governed by a single hyperparameter, closes 63--98\\% of the H2O gap at sub-20\\% budgets and, at moderate budgets, exceeds full-budget accuracy by acting as an implicit denoiser. A 15\\,MB linear role probe provides a low-latency feature extractor for resource-constrained inference.",
-      "openreviewUrl": "https://openreview.net/forum?id=sxrZmaXb0t",
       "poster": {
         "id": "poster-1",
         "kind": "poster",
@@ -282,40 +256,6 @@
         "end": "10:45",
         "order": 1
       }
-    },
-    {
-      "id": "paper-104",
-      "submissionNumber": 104,
-      "title": "Learning with Volterra Neural Networks: A System Theoretic Perspective",
-      "authors": [
-        {
-          "name": "Haoyu Yun",
-          "profileUrl": "https://openreview.net/profile?id=~Haoyu_Yun1"
-        },
-        {
-          "name": "Hamid Krim",
-          "profileUrl": null
-        },
-        {
-          "name": "Yufang Bao",
-          "profileUrl": null
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Foundation & Generative Models for Signals",
-      "abstract": "Higher-order interaction components are important for signal, image, and video modeling, but explicit high-order operators often suffer from rapidly increasing parameter and computational costs. This paper presents kVNN, a learnable kernelized Volterra Neural operator for compact higher-order filtering. The motivation is to use kernelization to improve the efficiency of Volterra-type neural operators while providing a structured interpretation of their higher-order components. The proposed formulation combines the order-wise structure of Volterra filtering with learnable polynomial-kernel atoms, allowing different interaction orders to be represented by separate learnable centers and coefficients. This order-decoupled representation avoids explicit high-order tensor parameterization and can be implemented as a CNN-compatible layer. Experiments on representative vision tasks show that kVNN achieves a favorable accuracy--efficiency trade-off.",
-      "openreviewUrl": "https://openreview.net/forum?id=q28zPvk6HX",
-      "poster": {
-        "id": "poster-1",
-        "kind": "poster",
-        "label": "Poster Session 1",
-        "day": "Tuesday",
-        "date": "2026-09-29",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
     },
     {
       "id": "paper-78",
@@ -710,36 +650,6 @@
         "end": "14:30",
         "order": 2
       }
-    },
-    {
-      "id": "paper-139",
-      "submissionNumber": 139,
-      "title": "Fed-ETF: Adaptive and Robust Federated Learning under Data Heterogeneity and Byzantine Attacks",
-      "authors": [
-        {
-          "name": "Alina Basharat",
-          "profileUrl": "https://openreview.net/profile?id=~Alina_Basharat1"
-        },
-        {
-          "name": "Ping Xu",
-          "profileUrl": null
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Responsible, Causal & Federated Signal Intelligence",
-      "abstract": "We propose Fed-ETF, a Byzantine-robust federated learning framework that addresses the dual challenges of data heterogeneity and adversarial client behaviors. Our approach introduces a novel trust-based aggregation mechanism and adaptive learning rates to improve global model robustness and performance. Specifically, each client’s contribution is evaluated using a trust score; a similarity-based metric computed via cosine similarity between a client’s update and a reference update derived from a trusted dataset. These scores are iteratively updated and used to filter out unreliable clients and reweight contributions during aggregation through a Trust Score Filtering mechanism. \nTo address the client drift issue in heterogeneous environments and stabilize training, we incorporate an Exponential Moving Average-based adaptive learning rate strategy that dynamically adjusts client-side learning rates in proportion to their trust scores. \nTheoretically, we provide convergence guarantees under convex and smooth loss conditions, quantifying the impact of the trust score mechanism and discard rate on model performance. Empirical evaluations on non-IID data and under multiple adversarial scenarios demonstrate that Fed-ETF significantly outperforms existing methods.",
-      "openreviewUrl": "https://openreview.net/forum?id=TlqQybxuax",
-      "poster": {
-        "id": "poster-1",
-        "kind": "poster",
-        "label": "Poster Session 1",
-        "day": "Tuesday",
-        "date": "2026-09-29",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
     },
     {
       "id": "paper-111",
@@ -1407,44 +1317,6 @@
       }
     },
     {
-      "id": "paper-156",
-      "submissionNumber": 156,
-      "title": "COGNITIVETWIN: ROBUST MULTI-MODAL DIGITAL TWINS FOR PREDICTING COGNITIVE DECLINE IN ALZHEIMER'S DISEASE",
-      "authors": [
-        {
-          "name": "Bulent Soykan",
-          "profileUrl": "https://openreview.net/profile?id=~Bulent_Soykan2"
-        },
-        {
-          "name": "Gulsah Hancerliogullari Koksalmis",
-          "profileUrl": "https://arxiv.org/search/?searchtype=author&query=Gulsah%20Hancerliogullari%20Koksalmis"
-        },
-        {
-          "name": "Hsin-Hsiung Huang",
-          "profileUrl": "https://arxiv.org/search/?searchtype=author&query=Hsin-Hsiung%20Huang"
-        },
-        {
-          "name": "Laura Brattain",
-          "profileUrl": null
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "ML for Neuroimaging, Neuroscience and Beyond",
-      "abstract": "Predicting individual cognitive decline in Alzheimer's disease requires high accuracy, demographic fairness, and robustness to missing data. We present CognitiveTwin, a digital twin framework that forecasts patient-specific cognitive trajectories. The model integrates multi-modal longitudinal data (clinical, imaging, biomarker, and genetic) using a Transformer-based fusion architecture coupled with a Deep Markov Model for temporal dynamics. Evaluated on 1,666 patients from the TADPOLE dataset, CognitiveTwin predicted 24-month Mini-Mental State Examination (MMSE) scores with a Mean Absolute Error (MAE) of 1.619 and a progression AUROC of 0.912. The model achieved uniform calibration (Expected Calibration Error = 0.054), strict performance parity across biological sex and age groups, and degraded by only 0.3\\% under a simulated 15\\% missing-not-at-random (MNAR) scenario. Ablation studies confirm the critical necessity of both temporal modeling and multi-modal fusion. CognitiveTwin provides accurate, equitable, and resilient forecasting for personalized care planning and clinical trial enrichment. Code is available at \\url{https://anonymous.4open.science/r/cognitivedt-FF2A}.",
-      "openreviewUrl": "https://openreview.net/forum?id=jOEjQFKjZ7",
-      "poster": {
-        "id": "poster-2",
-        "kind": "poster",
-        "label": "Poster Session 2",
-        "day": "Wednesday",
-        "date": "2026-09-30",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
-    },
-    {
       "id": "paper-164",
       "submissionNumber": 164,
       "title": "Graph-Constrained Hawkes Modeling of EEG Seizure Propagation",
@@ -1581,62 +1453,6 @@
       "theme": "ML for Neuroimaging, Neuroscience and Beyond",
       "abstract": "Modern applications increasingly generate tensor-structured data (i.e., multiway arrays), which are often used as covariates in regression problems. In this work, we focus on ridge regression with tensor covariates, where a common approach is to vectorize each tensor and estimate an unstructured coefficient vector. However, this approach fails to exploit the tensor structure of the regression coefficients and can create high-dimensional, ill-posed estimation problems when sample sizes are limited. Prior work has addressed these challenges by imposing low-separation-rank (LSR) structure on the coefficient tensor, thereby reducing the effective complexity of the model.\nHowever, existing factorized LSR methods require the separation rank to be specified a priori, making model selection computationally expensive and the resulting estimator sensitive to rank misspecification. We propose LISTEN, an implicitly regularized LSR-structured ridge regression framework that enforces structure via a convex regularizer rather than an explicit rank-constrained factorization. We develop an alternating minimization algorithm with ADMM-based updates and establish a stationarity guarantee under exact block minimization. \nSynthetic experiments show that LISTEN adapts as the coefficient tensor deviates from a compact LSR structure, while neuroimaging experiments demonstrate competitive predictive performance relative to the considered baselines.",
       "openreviewUrl": "https://openreview.net/forum?id=WXMedMqjvG",
-      "poster": {
-        "id": "poster-2",
-        "kind": "poster",
-        "label": "Poster Session 2",
-        "day": "Wednesday",
-        "date": "2026-09-30",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
-    },
-    {
-      "id": "paper-27",
-      "submissionNumber": 27,
-      "title": "Mechanistic-Interpretability Sparse Autoencoders for Mammalian Visual Cortex",
-      "authors": [
-        {
-          "name": "Bryan Cheng",
-          "profileUrl": "https://openreview.net/profile?id=~Bryan_Cheng1"
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "ML for Neuroimaging, Neuroscience and Beyond",
-      "abstract": "Two-photon calcium imaging records hundreds of cortical neurons simultaneously across natural stimuli, yet how that population activity decomposes into interpretable, crosscontext-stable units remains opaque: principal components mix stimulus contexts into single high-variance modes, tuning curves do not scale beyond a few conditions, and contrastive latent embeddings are dense and polysemantic. The cortical population is itself polysemantic—each high-variance direction mixes multiple stimulus contexts—and the right tool to factorise it is an overcomplete sparse decomposition that yields units that are monosemantic and causally testable. We develop the corticalcalcium machinery and tests required to make such a decomposition actually answer neuroscience questions on Allen Brain Observatory data (the same family of methods has independently become the dominant interpretability tool for large language models, but the cortical population code is the problem we target). We build a calcium-aware top-K sparse autoencoder—preencoder bias, auxiliary-K dead-feature revival, and a GCaMP6ftuned temporal-smoothness term—and add three test tools: a cross-paradigm firing-rate-rank consistency (cp) score that measures how stably each feature’s activation rank survives switching stimulus paradigm; a condition-axis permutation null that makes the cross-mouse alignment test non-degenerate; and a per-frame variance lower bound that any mean-pool encoder must obey, escaped by a frame-wise SAE. On 30 Allen Brain Observatory sessions spanning 6 visual cortical areas and 4 excitatory cre lines, SAE features beat PCA on cp in 30 of 30 sessions (p = 9.3×10−10 , Cohen’s d = +1.98; the 30/30 win holds within every cre line individually), simultaneously beat ICA / vanilla AE / CEBRATime on 28/30, and beat an LFADS sequential VAE on 4/6 matched-session evaluation. Causally ablating top-cp features drops cp more than ablating random controls (specificity +0.107, 6/6 sessions); a hierarchical layer-2 SAE lifts cp where layer1 has slack (18/22 non-ceiling sessions win, p = 1.3 × 10−3 ); SAE features universalise across animals on 4/8 paradigmoverlapping cross-mouse pairs (Z > 2); and the frame-wise variant recovers +0.37 to +0.60 per-frame FVE on 10 sessions while a matched LFADS-lite mean-pool baseline collapses to ≈ 0, independently confirming the variance bound. Applied as a discovery tool, the SAE surfaces three cortical predictions: a cell-class signature in which L2/3 (Cux2) over-represents naturalscenes-preferring features and L4 (Rorb / Scnn1a / Nr5a1) overrepresents drifting-gratings-preferring features (Fisher p = 0.017 and 0.007); a paradigm-breadth gradient that tracks the Harris et al. mouse-visual-area hierarchy (Spearman ρ = +0.71); and a 9-entry per-(area, cre-line) atlas of named features in which each entry lists the Allen session id, feature index, preferred stimulus, and top-5 driving neurons—the first SAE-derived candidatemicrocircuit predictions on cortical calcium imaging, and a falsifiable target list for follow-up recording and perturbation. Code under MIT",
-      "openreviewUrl": "https://openreview.net/forum?id=Q0BLnQ9c4h",
-      "poster": {
-        "id": "poster-2",
-        "kind": "poster",
-        "label": "Poster Session 2",
-        "day": "Wednesday",
-        "date": "2026-09-30",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
-    },
-    {
-      "id": "paper-11",
-      "submissionNumber": 11,
-      "title": "Mixture-of-Experts Subspace Fusion in Multimodal Latent Brain Network Representation Learning",
-      "authors": [
-        {
-          "name": "Meenu Ajith",
-          "profileUrl": "https://openreview.net/profile?id=~Meenu_Ajith1"
-        },
-        {
-          "name": "Vince D. Calhoun",
-          "profileUrl": null
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "ML for Neuroimaging, Neuroscience and Beyond",
-      "abstract": "Neurodegenerative diseases such as Alzheimer’s disease (AD) involve complementary functional and structural brain alterations that are difficult to capture using single-modality neuroimaging models. While multimodal variational autoencoders (MMVAEs) have shown promise for integrating fMRI and sMRI data, existing fusion strategies typically rely on global latent integration, limiting their ability to model heterogeneous modality contributions across latent factors. To address this limitation, we propose a Mixture-of-Experts (MoE) subspace fusion framework for multimodal variational representation learning for brain networks. The proposed model partitions the latent space into multiple subspaces and independently learns adaptive modality weights within each partition using probabilistic gating. Experiments on the ADNI dataset demonstrate that the proposed subspace fusion improves latent representation quality, identifies disease-discriminative latent subspaces, and exhibits robustness to missing modalities through adaptive gate compensation without requiring retraining.",
-      "openreviewUrl": "https://openreview.net/forum?id=kfb9dr7WPE",
       "poster": {
         "id": "poster-2",
         "kind": "poster",
@@ -2552,40 +2368,6 @@
       }
     },
     {
-      "id": "paper-161",
-      "submissionNumber": 161,
-      "title": "TYPE INFERENCE ON STRIPPED BINARIES USING HYPERGRAPH NEURAL NETWORKS",
-      "authors": [
-        {
-          "name": "Md. Imtiaz Kabir",
-          "profileUrl": "https://openreview.net/profile?id=~Md._Imtiaz_Kabir1"
-        },
-        {
-          "name": "Md. Rabby Hossain",
-          "profileUrl": null
-        },
-        {
-          "name": "Sheikh Azizul Hakim",
-          "profileUrl": null
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Temporal & Sequential Signal Learning",
-      "abstract": "As binary executables are compiled into stripped binaries, information about these types is lost forever. Although state-of-the-art binary type inference techniques such as TYGR use Graph Neural Networks (GNN) to infer types based on control flow graphs and data flow graphs, traditional graphs fail to efficiently represent multiple occurrences of the same type without sacrificing contextual accuracy. In this extended abstract, we propose a forward-thinking approach for moving binary type inference from traditional pairwise graphs to hypergraphs. We show that although using traditional graphs with the Clique Expansion approach to efficiently represent hyperedges is plagued with catastrophic message passing noise, constructing a Hypergraph Neural Network using a Relational Graph Attention Network (RGAT) architecture mathematically solves the problem. Our preliminary results using a subset of 1,000 binaries show that our approach is able to achieve an accuracy of 68.86\\%, which is greater than the accuracy of the traditional RGCN approach at 65.59\\%.",
-      "openreviewUrl": "https://openreview.net/forum?id=uZZLWPuHlk",
-      "poster": {
-        "id": "poster-2",
-        "kind": "poster",
-        "label": "Poster Session 2",
-        "day": "Wednesday",
-        "date": "2026-09-30",
-        "start": "16:00",
-        "end": "18:00"
-      },
-      "oral": null
-    },
-    {
       "id": "paper-100",
       "submissionNumber": 100,
       "title": "Unsupervised learning of Kalman prediction-update steps using neural networks",
@@ -3005,32 +2787,6 @@
       "oral": null
     },
     {
-      "id": "paper-187",
-      "submissionNumber": 187,
-      "title": "Structured State Reconstruction from Balatro Footage for Imitation Learning",
-      "authors": [
-        {
-          "name": "Marco A. Costa",
-          "profileUrl": "https://openreview.net/profile?id=~Marco_A._Costa1"
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Agentic & Multimodal Learning",
-      "abstract": "Expert demonstrations are valuable for imitation learning, but many commercial games do not provide structured logs, replay files, or APIs for querying environment state. This paper presents a video-based state reconstruction pipeline that converts public gameplay footage of the roguelike deck-building game Balatro into state-action trajectories: sequences of reconstructed game states paired with the actions the player took. The pipeline combines OCR, object detection for overlapping or modular objects, object tracking, zone-based grouping, persistent state parsing, and rule-based event detection to recover the game state and the player action at each decision point. Across 124 gameplay videos, the system reconstructs 735,288 tensorized decision steps from 1,973 gameplay runs and achieves a pooled event-extraction F1 score of 0.880 on manually annotated clips. We further train a branched behavioral-cloning policy on the reconstructed dataset, obtaining 70.4% family top-1 accuracy and 94.7% family top-3 accuracy on held-out test videos. These results show that ordinary gameplay video can be transformed into large-scale imitation-learning data without direct access to game-engine state, while highlighting structured action prediction and long-horizon decision making as remaining challenges.",
-      "openreviewUrl": "https://openreview.net/forum?id=SBis7GbvOY",
-      "poster": {
-        "id": "poster-3",
-        "kind": "poster",
-        "label": "Poster Session 3",
-        "day": "Thursday",
-        "date": "2026-10-01",
-        "start": "13:00",
-        "end": "15:00"
-      },
-      "oral": null
-    },
-    {
       "id": "paper-96",
       "submissionNumber": 96,
       "title": "Uncertainty-Aware Agentic LLMs for Forensic Triage of Windows Event-Log Streams",
@@ -3189,32 +2945,6 @@
       "theme": "Other",
       "abstract": "High throughput single cell data is now being collected on entire cohorts of data, for example cancer patients. In order to understand such heterogeneity at a patient level from data that is at the cellular level, a new concept called phenoscaping is appearing. A phenoscape is a lower dimensional embedding, where each ”datapoint” is an entire single cell distribution, and distances between datapoint are optimal transport distances. For creating phenoscapes, computing geometry-aware OT at this large scale (between all pairs of patient datasets) remains an open challenge. Existing methods either rely on Euclidean ground metrics that distort intrinsic manifold structure or fail when data is sparse, unevenly sampled, or large in scale. We present Pheno-GS (Phenoscape-scale Geodesic Sinkhorn), a manifold OT system that computes accurate, scalable geodesic transport distances under noisy, unbalanced, and large-scale settings. Pheno-GS combines three core capabilities: 1) a graph connectivity regularization module that guarantees well-defined geodesic distances on sparse or disconnected manifolds; 2) an unbalanced OT formulation supporting transport between distributions of differing total mass via KL marginal penalties, and 3) a batched matrix algorithm that computes the full pairwise distance matrix with exactly two heat diffusions –\nachieving over 200× speedup for 500 distributions compared to traditional Geodesic Sinkhorn. We validate Pheno-GS on synthetic manifold benchmarks and a high-dimensional single-cell CyTOF perturbation dataset, demonstrating superior geometric fidelity, robustness, and scalability over existing methods.",
       "openreviewUrl": "https://openreview.net/forum?id=EHRXtGFCGF",
-      "poster": {
-        "id": "poster-3",
-        "kind": "poster",
-        "label": "Poster Session 3",
-        "day": "Thursday",
-        "date": "2026-10-01",
-        "start": "13:00",
-        "end": "15:00"
-      },
-      "oral": null
-    },
-    {
-      "id": "paper-85",
-      "submissionNumber": 85,
-      "title": "TENSOR-NETWORK QUANTUM-INSPIRED SUCCESSIVE SUBSPACE LEARNING",
-      "authors": [
-        {
-          "name": "Min-Kuan Chang",
-          "profileUrl": "https://openreview.net/profile?id=~Min-Kuan_Chang1"
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Other",
-      "abstract": "Successive subspace learning (SSL) constructs feedforward representations by learning local covariance eigenspaces. This paper develops tensor-network quantum-inspired successive subspace learning (TN-QiSSL), a density-operator analogue of SSL. Each normalized local patch is mapped to a quantum-inspired product state, the patch ensemble is summarized by an empirical density operator, and local features are obtained from its eigenspace through signed projection, projection-energy, and class-fidelity channels. The resulting layer keeps the stage-wise SSL pipeline but changes the geometry from Euclidean covariance to Hilbert-space density operators. The induced fidelity kernel is locally RBF-like, while tensor-network compression supplies a separate bond-dimension control for interaction complexity. Experiments on high-order interaction, synthetic texture, and KTH-TIPS2-b material recognition show that local TN-QiSSL improves over raw-patch, PCA/SSL, product-state, and sample-level variants when class information is carried by repeated local or high-order patch structure.",
-      "openreviewUrl": "https://openreview.net/forum?id=OLUaUdxxbZ",
       "poster": {
         "id": "poster-3",
         "kind": "poster",
@@ -3561,36 +3291,6 @@
       "theme": "Temporal & Sequential Signal Learning",
       "abstract": "Transformer-based electroencephalography (EEG) classifiers achieve strong accuracy but offer no structural account of *when* brain states change, which limits their use where transition timing guides clinical decisions. We introduce NeuroState, a multi-resolution EEG transformer whose auxiliary boundary module estimates changepoint probabilities that condition attention. Our central result is an optimization one. Across eleven controlled interventions we document *auxiliary head collapse*, a failure mode in which jointly trained boundary modules converge to near-constant outputs, and we show that the deciding factor is not the loss or the mask but the order in which gradients are allowed to flow. Attention-Contrastive Boundary Learning (ACBL) with gradient isolation, a three-phase curriculum that detaches boundary gradients from the classification path during a formation phase, is the only one of the eleven that yields non-degenerate boundaries. Over five seeds NeuroState attains Cohen's $\\kappa = 0.596 \\pm 0.018$ on Sleep-EDF staging and area under the receiver operating characteristic curve (AUROC) $0.924 \\pm 0.014$ on CHB-MIT cross-subject seizure detection, with AUROC 0.913 on TUAB. A shuffled-input null shows that the Sleep-EDF boundaries carry measurable content in every seed, while conditional tests on CHB-MIT find no transition-related structure, so we present the accompanying concept-based and spectral analyses as preliminary and scope our conclusions to the EEG settings measured here.",
       "openreviewUrl": "https://openreview.net/forum?id=714OJTlOiX",
-      "poster": {
-        "id": "poster-3",
-        "kind": "poster",
-        "label": "Poster Session 3",
-        "day": "Thursday",
-        "date": "2026-10-01",
-        "start": "13:00",
-        "end": "15:00"
-      },
-      "oral": null
-    },
-    {
-      "id": "paper-42",
-      "submissionNumber": 42,
-      "title": "Online Bayesian Node Classification on Inductive Graphs under Distribution Shift",
-      "authors": [
-        {
-          "name": "Jinwen Xu",
-          "profileUrl": "https://openreview.net/profile?id=~Jinwen_Xu1"
-        },
-        {
-          "name": "Qin Lu",
-          "profileUrl": null
-        }
-      ],
-      "authorsSource": "MLSP_2026_First author student status.xlsx",
-      "authorsMatchScore": 1,
-      "theme": "Temporal & Sequential Signal Learning",
-      "abstract": "On evolving graphs, node classifiers face two demands: inductive generalization to newly arriving nodes under distribution shift, and calibrated uncertainty for safety-sensitive applications. Standard graph neural networks (GNNs) are trained once and address neither. We adapt the Bayesian last layer (BLL) model, placing {\\it random} last-layer (LL) parameters atop a {\\it deterministic} GNN encoder for uncertainty quantification. The categorical softmax likelihood needed for classification breaks Gaussian conjugacy, so neither the training posterior nor the test-time streaming update admits a closed-form solution. We address both: a variational Bayesian last layer (VBLL) objective jointly trains the encoder and an approximate LL posterior by maximizing an evidence lower bound with Monte-Carlo expected log-likelihood; at test time, an online Laplace update on the LL posterior (encoder frozen) amounts to a power-prior Bayesian model with exponential forgetting and a Kullback-Leibler (KL) anchor to the training posterior. Across five node classification benchmarks under distribution shift, the online VBLL is the only model to win both accuracy and NLL on every dataset, with gains up to $+17$ points on \\texttt{Cora} and $+14$ points on \\texttt{ogbn-arxiv} over the strongest non-VBLL baseline, and remains competitive on calibration against MC Dropout, Deep Ensembles, Temperature Scaling, and Gaussian-process classifiers.",
-      "openreviewUrl": "https://openreview.net/forum?id=J1973XhtBD",
       "poster": {
         "id": "poster-3",
         "kind": "poster",

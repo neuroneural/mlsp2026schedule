@@ -4,6 +4,7 @@ import { FileBlob, SpreadsheetFile, Workbook } from "@oai/artifact-tool";
 const WORKBOOK_PATH = "MLSP 2026 Accepted papers by theme with poster oral assignments.xlsx";
 const SUBMISSIONS_PATH = "MLSP 2026 Submission Status.csv";
 const OUTPUT_PATH = "data/papers.json";
+const withdrawnPapers = new Set(JSON.parse(await fs.readFile("data/withdrawn-papers.json", "utf8")));
 
 const sessionDetails = {
   "Oral Session 1 - Foundation & Generative Models for Signals": {
@@ -129,6 +130,7 @@ let authorMatches = 0;
 let titleMismatches = 0;
 const papers = [];
 for (const [index, record] of records.entries()) {
+  if (withdrawnPapers.has(Number(record.submission_number))) continue;
   const title = cleanTitle(record.title);
   const submission = submissionsByNumber.get(Number(record.submission_number));
   if (!submission) throw new Error(`Submission #${record.submission_number} is missing from ${SUBMISSIONS_PATH}`);

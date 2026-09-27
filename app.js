@@ -387,7 +387,7 @@ function getJson(url) {
   });
 }
 
-Promise.all([getJson("./data/program.json?v=20260924-banquet-time"), getJson("./data/papers.json?v=20260909-paper24-oral4")])
+Promise.all([getJson("./data/program.json?v=20260924-banquet-time"), getJson("./data/papers.json?v=20260927-withdrawals-2")])
   .then(([programData, data]) => {
     program = programData.program;
     renderProgram();
