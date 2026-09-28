@@ -87,7 +87,7 @@
           "abstract": "A continuation of the low-rank adaptation framework, aimed at building a systematic understanding of fine-tuning methods with stronger expressiveness, effectiveness, and applicability. The session highlights how signal-processing insights can support more principled and broadly deployable LLM adaptation."
         },
         {
-          "time": "5:30–6:00 PM",
+          "time": "5:30–6:30 PM",
           "title": "Special Keynote",
           "detail": "Tülay Adalı",
           "kind": "keynote",
