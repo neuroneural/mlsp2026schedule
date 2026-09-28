@@ -853,6 +853,13 @@ summary:focus-visible {
   text-underline-offset: 2px;
 }
 
+.author-note {
+  margin: -2px 0 5px;
+  color: var(--ink-soft);
+  font-size: 0.73rem;
+  font-style: italic;
+}
+
 .authors-missing {
   color: var(--slate);
   font-style: italic;

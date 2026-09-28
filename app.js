@@ -193,10 +193,13 @@ function authorMarkup(paper) {
   if (!paper.authors.length) {
     return `<span class="authors-missing">Author list available on OpenReview</span>`;
   }
-  return paper.authors.map((author) => author.profileUrl
-    ? `<a href="${escapeHtml(author.profileUrl)}" target="_blank" rel="noreferrer">${highlight(author.name)}</a>`
-    : `<span class="author-name">${highlight(author.name)}</span>`,
-  ).join(", ");
+  const equalContributors = new Set(paper.equalContributionAuthors ?? []);
+  return paper.authors.map((author) => {
+    const name = author.profileUrl
+      ? `<a href="${escapeHtml(author.profileUrl)}" target="_blank" rel="noreferrer">${highlight(author.name)}</a>`
+      : `<span class="author-name">${highlight(author.name)}</span>`;
+    return `${name}${equalContributors.has(author.name) ? '<span aria-label="equal contribution">*</span>' : ""}`;
+  }).join(", ");
 }
 
 function paperMarkup(paper) {
@@ -213,6 +216,7 @@ function paperMarkup(paper) {
       <div class="paper-main">
         <h3><a href="${escapeHtml(paper.openreviewUrl)}" target="_blank" rel="noreferrer">${highlight(displayTitle(paper.title))}</a></h3>
         <p class="authors">${authorMarkup(paper)}</p>
+        ${paper.equalContributionAuthors?.length ? '<p class="author-note">*Equal contribution</p>' : ""}
         <p class="theme">${highlight(paper.theme)}</p>
         <details>
           <summary>Read abstract</summary>
@@ -387,7 +391,7 @@ function getJson(url) {
   });
 }
 
-Promise.all([getJson("./data/program.json?v=20260924-banquet-time"), getJson("./data/papers.json?v=20260927-withdrawals-2")])
+Promise.all([getJson("./data/program.json?v=20260924-banquet-time"), getJson("./data/papers.json?v=20260927-author-note-196")])
   .then(([programData, data]) => {
     program = programData.program;
     renderProgram();

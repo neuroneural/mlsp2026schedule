@@ -27,6 +27,8 @@ node scripts/verify-data.mjs
 
 Run this after `build-data.mjs`, because rebuilding the paper data replaces `data/papers.json`.
 
+Equal-contribution designations are kept in `data/author-notes.json` and copied into `data/papers.json` during a rebuild. The author importers preserve these paper-level notes.
+
 If the camera-ready audit workbook is available, it can populate every author name without API credentials while preserving its first-author OpenReview profile links:
 
 ```bash

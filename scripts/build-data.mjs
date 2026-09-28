@@ -5,6 +5,7 @@ const WORKBOOK_PATH = "MLSP 2026 Accepted papers by theme with poster oral assig
 const SUBMISSIONS_PATH = "MLSP 2026 Submission Status.csv";
 const OUTPUT_PATH = "data/papers.json";
 const withdrawnPapers = new Set(JSON.parse(await fs.readFile("data/withdrawn-papers.json", "utf8")));
+const authorNotes = JSON.parse(await fs.readFile("data/author-notes.json", "utf8"));
 
 const sessionDetails = {
   "Oral Session 1 - Foundation & Generative Models for Signals": {
@@ -168,6 +169,7 @@ for (const [index, record] of records.entries()) {
     authors: metadata.authors,
     authorsSource: metadata.source,
     authorsMatchScore: metadata.matchScore,
+    ...authorNotes[record.submission_number],
     theme: record.theme,
     abstract: String(submission.abstract ?? "").trim(),
     openreviewUrl: submission.forum || record.openreview_link,

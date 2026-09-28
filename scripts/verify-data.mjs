@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 const data = JSON.parse(await fs.readFile("data/papers.json", "utf8"));
 const papers = data.papers;
 const withdrawnPapers = new Set(JSON.parse(await fs.readFile("data/withdrawn-papers.json", "utf8")));
+const authorNotes = JSON.parse(await fs.readFile("data/author-notes.json", "utf8"));
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -14,6 +15,13 @@ assert(papers.every((paper) => !withdrawnPapers.has(paper.submissionNumber)), "A
 assert(new Set(papers.map((paper) => paper.submissionNumber)).size === papers.length, "Submission numbers are not unique");
 assert(new Set(papers.map((paper) => paper.openreviewUrl)).size === papers.length, "OpenReview URLs are not unique");
 assert(papers.every((paper) => paper.title && paper.abstract && paper.poster), "A paper is missing title, abstract, or poster data");
+for (const [submissionNumber, note] of Object.entries(authorNotes)) {
+  const paper = papers.find((item) => item.submissionNumber === Number(submissionNumber));
+  assert(paper, `Author note references missing paper ${submissionNumber}`);
+  assert(JSON.stringify(paper.equalContributionAuthors) === JSON.stringify(note.equalContributionAuthors), `Author note mismatch for paper ${submissionNumber}`);
+  const authorNames = new Set(paper.authors.map((author) => author.name));
+  assert(note.equalContributionAuthors.every((name) => authorNames.has(name)), `Equal-contribution author missing from paper ${submissionNumber}`);
+}
 
 const posterCounts = Object.fromEntries(
   ["poster-1", "poster-2", "poster-3"].map((id) => [id, papers.filter((paper) => paper.poster.id === id).length]),

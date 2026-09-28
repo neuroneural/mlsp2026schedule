@@ -1293,6 +1293,11 @@
       ],
       "authorsSource": "MLSP_2026_First author student status.xlsx",
       "authorsMatchScore": 1,
+      "equalContributionAuthors": [
+        "Suhyun Kim",
+        "Jinmo Han",
+        "Danny Dongyeop Han"
+      ],
       "theme": "ML for Neuroimaging, Neuroscience and Beyond",
       "abstract": "Decoding and interpreting naturalistic speech from the brain increasingly relies on alignment to pretrained speech and language representation spaces. However, current CLIP-style brain–speech alignment ground neural activity to a single anchor modality—audio or text—despite the brain’s inherently multimodal speech processing. This induces a trade-off: audio anchoring preserves temporal structure but weakens linguistic separability, while text anchoring captures semantics yet discards acoustic detail.\nWe propose $\\textbf{\\emph{BAT-CLIP}}$, the first CLIP-style trimodal alignment framework for iEEG that jointly aligns neural embeddings to both pretrained audio and text anchors in a shared, frozen audio–text manifold. On the naturalistic Podcast benchmark, $\\textit{BAT-CLIP}$ yields more robust representations than bimodal CLIP baselines. We also highlight the importance of using self-supervised foundation models for CLIP training.",
       "openreviewUrl": "https://openreview.net/forum?id=YAMMn5P35i",
