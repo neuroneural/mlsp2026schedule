@@ -12,7 +12,7 @@ node scripts/build-data.mjs
 
 The script cross-references accepted submission numbers and forum links, calculates each 15-minute oral slot from the confirmed presentation order, and enriches exact public arXiv title matches with author names.
 
-Withdrawn submission numbers are listed in `data/withdrawn-papers.json` and excluded during rebuilds. The deployable schedule currently contains 90 papers after ten removals.
+Withdrawn submission numbers are listed in `data/withdrawn-papers.json` and excluded during rebuilds. The deployable schedule currently contains 91 papers after nine removals.
 
 ## Import all authors from OpenReview
 

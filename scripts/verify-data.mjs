@@ -9,7 +9,7 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-assert(papers.length === 90, `Expected 90 papers, found ${papers.length}`);
+assert(papers.length === 91, `Expected 91 papers, found ${papers.length}`);
 assert(data.paperCount === papers.length, "Paper count does not reconcile");
 assert(papers.every((paper) => !withdrawnPapers.has(paper.submissionNumber)), "A withdrawn paper is still scheduled");
 assert(new Set(papers.map((paper) => paper.submissionNumber)).size === papers.length, "Submission numbers are not unique");
@@ -26,7 +26,7 @@ for (const [submissionNumber, note] of Object.entries(authorNotes)) {
 const posterCounts = Object.fromEntries(
   ["poster-1", "poster-2", "poster-3"].map((id) => [id, papers.filter((paper) => paper.poster.id === id).length]),
 );
-assert(JSON.stringify(posterCounts) === JSON.stringify({ "poster-1": 31, "poster-2": 30, "poster-3": 29 }), `Unexpected poster counts: ${JSON.stringify(posterCounts)}`);
+assert(JSON.stringify(posterCounts) === JSON.stringify({ "poster-1": 31, "poster-2": 31, "poster-3": 29 }), `Unexpected poster counts: ${JSON.stringify(posterCounts)}`);
 
 const oralPapers = papers.filter((paper) => paper.oral);
 assert(oralPapers.length === 30, `Expected 30 oral papers, found ${oralPapers.length}`);

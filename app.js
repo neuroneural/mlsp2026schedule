@@ -391,7 +391,7 @@ function getJson(url) {
   });
 }
 
-Promise.all([getJson("./data/program.json?v=20260928-adali-keynote"), getJson("./data/papers.json?v=20260927-author-note-196")])
+Promise.all([getJson("./data/program.json?v=20260928-adali-keynote"), getJson("./data/papers.json?v=20260930-restore-paper11")])
   .then(([programData, data]) => {
     program = programData.program;
     renderProgram();

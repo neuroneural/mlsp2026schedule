@@ -2,8 +2,8 @@
   "generatedAt": "2026-08-25T19:01:55.478Z",
   "sourceWorkbook": "MLSP 2026 Accepted papers by theme with poster oral assignments.xlsx",
   "conferenceTimezone": "America/New_York",
-  "paperCount": 90,
-  "authorMatchCount": 90,
+  "paperCount": 91,
+  "authorMatchCount": 91,
   "sourceTitleMismatchCount": 7,
   "papers": [
     {
@@ -1458,6 +1458,36 @@
       "theme": "ML for Neuroimaging, Neuroscience and Beyond",
       "abstract": "Modern applications increasingly generate tensor-structured data (i.e., multiway arrays), which are often used as covariates in regression problems. In this work, we focus on ridge regression with tensor covariates, where a common approach is to vectorize each tensor and estimate an unstructured coefficient vector. However, this approach fails to exploit the tensor structure of the regression coefficients and can create high-dimensional, ill-posed estimation problems when sample sizes are limited. Prior work has addressed these challenges by imposing low-separation-rank (LSR) structure on the coefficient tensor, thereby reducing the effective complexity of the model.\nHowever, existing factorized LSR methods require the separation rank to be specified a priori, making model selection computationally expensive and the resulting estimator sensitive to rank misspecification. We propose LISTEN, an implicitly regularized LSR-structured ridge regression framework that enforces structure via a convex regularizer rather than an explicit rank-constrained factorization. We develop an alternating minimization algorithm with ADMM-based updates and establish a stationarity guarantee under exact block minimization. \nSynthetic experiments show that LISTEN adapts as the coefficient tensor deviates from a compact LSR structure, while neuroimaging experiments demonstrate competitive predictive performance relative to the considered baselines.",
       "openreviewUrl": "https://openreview.net/forum?id=WXMedMqjvG",
+      "poster": {
+        "id": "poster-2",
+        "kind": "poster",
+        "label": "Poster Session 2",
+        "day": "Wednesday",
+        "date": "2026-09-30",
+        "start": "16:00",
+        "end": "18:00"
+      },
+      "oral": null
+    },
+    {
+      "id": "paper-11",
+      "submissionNumber": 11,
+      "title": "Mixture-of-Experts Subspace Fusion in Multimodal Latent Brain Network Representation Learning",
+      "authors": [
+        {
+          "name": "Meenu Ajith",
+          "profileUrl": "https://openreview.net/profile?id=~Meenu_Ajith1"
+        },
+        {
+          "name": "Vince D. Calhoun",
+          "profileUrl": null
+        }
+      ],
+      "authorsSource": "MLSP_2026_First author student status.xlsx",
+      "authorsMatchScore": 1,
+      "theme": "ML for Neuroimaging, Neuroscience and Beyond",
+      "abstract": "Neurodegenerative diseases such as Alzheimer’s disease (AD) involve complementary functional and structural brain alterations that are difficult to capture using single-modality neuroimaging models. While multimodal variational autoencoders (MMVAEs) have shown promise for integrating fMRI and sMRI data, existing fusion strategies typically rely on global latent integration, limiting their ability to model heterogeneous modality contributions across latent factors. To address this limitation, we propose a Mixture-of-Experts (MoE) subspace fusion framework for multimodal variational representation learning for brain networks. The proposed model partitions the latent space into multiple subspaces and independently learns adaptive modality weights within each partition using probabilistic gating. Experiments on the ADNI dataset demonstrate that the proposed subspace fusion improves latent representation quality, identifies disease-discriminative latent subspaces, and exhibits robustness to missing modalities through adaptive gate compensation without requiring retraining.",
+      "openreviewUrl": "https://openreview.net/forum?id=kfb9dr7WPE",
       "poster": {
         "id": "poster-2",
         "kind": "poster",
